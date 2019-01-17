@@ -1,0 +1,25 @@
+{
+  "name": "ssm-jobplaner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "devserver": "node ./node_modules/nodemon/bin/nodemon.js server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "6.2.0",
+    "dotenv-json": "1.0.0",
+    "express": "4.16.4",
+    "express-handlebars": "3.0.0",
+    "jquery": "3.3.1",
+    "materialize-css": "1.0.0-rc.2",
+    "moment": "2.23.0",
+    "mongoose": "5.4.4",
+    "vue": "2.5.22"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.9"
+  }
+}

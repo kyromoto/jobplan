@@ -1,0 +1,43 @@
+.container-fluid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width:initial;
+}
+
+.container-fluid > .row {
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid > .row > .col {
+    margin: 0;
+    padding: 0;
+}
+
+.job-list .job-list-item-header > .container > .row + .row {
+    margin-top: 0.5em;
+}
+
+.job-list .job-list-item-header h1 {
+    font-size: 100%;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.collapsible-body {
+    padding: 1rem;
+}
+
+.light-padding {
+    padding: 0.25rem ! important;
+}
+
+ul.staff-list > li:first-child {
+    padding-top: 0 !important;
+}
+
+ul.staff-list > li:last-child {
+    padding-bottom: 0 !important;
+}

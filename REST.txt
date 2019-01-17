@@ -1,0 +1,53 @@
+Resourcen:
+- job
+    - ID -> UID
+    - WAS: Title ->
+    - WANN: Datum -> 
+    - WO: Location -> 
+    - WER: Staff -> [Staff-ID's]
+    - INFOS: Freitext
+- Staff
+    - ID -> UID
+    - WER: name, nickname
+
+API:
+
+- /jobs
+    - POST: Job anlegen
+        - REQ: resource job ohne ID
+        - RES: resource job
+    - GET: Alle Jobs lesen
+        - Parameter:
+            - ?orderBy=<field_name>
+            - ?orderDir=<asc><desc>
+            - ?date_left (inklusive)
+            - ?date_right (exklusive)
+        - REQ: ---
+        - RES: Liste mit allen Resourcen (Jobs)
+- /jobs/<id>
+    - GET: Job lesen
+        - REQ: ---
+        - RES: resource job
+    - PATCH: Job ändern
+        - REQ: resource job mit allen feldern die geändert werden sollen
+        - RES: ???
+    - DELETE: Job löschen
+        - REQ: ---
+        - RES: gelöschte resource job
+- /staff
+    - POST: Neue Staff-Resource anlegen
+        - REQ: resource staff ohne ID
+        - RES: resource staff
+    - GET: Alle Staff-Resourcen erfragen
+        - REQ: ---
+        - RES: Liste mit allen Resourcen (Staff)
+- /staff/<id>
+    - GET:
+        - REQ: ---
+        - RES: resource job
+    - PATCH:
+        - REQ: resource job mit allen feldern die geändert werden sollen
+        - RES: ???
+    - DELETE:
+        - REQ: ---
+        - RES: gelöschte resource job

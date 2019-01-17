@@ -1,0 +1,23 @@
+[
+    {
+        "name": {
+            "first": "Oliver",
+            "last": "Rademaker"
+        },
+        "nickname": "Oli2"
+    },
+    {
+        "name": {
+            "first": "Jonathan",
+            "last": "Keuser"
+        },
+        "nickname": "JoKr"
+    },
+    {
+        "name": {
+            "first": "Johannes",
+            "last": "Held"
+        },
+        "nickname": "Jo"
+    }
+]

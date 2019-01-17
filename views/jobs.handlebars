@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col m12 s12">
+            <ul id="job-list" class="collapsible job-list">
+                <li v-for="job in jobs">
+                    <div class="collapsible-header job-list-item-header">
+                        <div class="container container-fluid">
+                            <div class="row">
+                                <div class="col m12 s12">
+                                    <h1>[[ job.title ]]</h1>
+                                    </Job>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col m3 s4 job-list-item-header-date">[[ job.date | moment ]]</div>
+                                <div class="col m9 s8">[[ job.location ]]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body job-list-item-body container container-fluid">
+                        <div class="row">
+                            <div class="col m8 s6">[[ job.info ]]</div>
+                            <div class="col m4 s6">
+                                <ul class="collection staff-list">
+                                    <li class="collection-item light-padding" v-for="staff in job.staff">[[ staff.nickname 
+                                        ]]</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col m12 s12">
+                                <a v-bind:href="'/jobs/' + job._id">edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        let jobList = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#job-list',
+            data: {
+                jobs: {{{ toJSON jobs }}}
+            },
+            filters : {
+                moment : function (date) {
+                    return moment(date).format('DD-MMMM-YYYY');
+                }
+            }
+        });
+
+        $('.collapsible').collapsible();
+    });
+</script>

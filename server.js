@@ -1,7 +1,9 @@
-const dotenv    = require("dotenv-json")();
+const dotenv    = require('dotenv-json')();
 const express   = require('express');
 const mongoose  = require('mongoose');
 const exphbs    = require('express-handlebars');
+
+const hbs_helpers   = require('./views/helpers');
 
 const app = express();
 
@@ -20,10 +22,19 @@ const MONGO_CONFIG = {
     useNewUrlParser: true
 }
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+const EXPHBS_CONFIG = {
+    defaultLayout: 'main',
+    helpers : hbs_helpers
+}
+
+app.engine('handlebars', exphbs(EXPHBS_CONFIG));
 app.set('view engine', 'handlebars');
 
-app.use('/', require('./views'));
+app.use('/', require('./controllers'));
+
+process.on('exit', () => {
+    mongoose.connection.close().then(() => console.log("DB is disconnected"));
+});
 
 mongoose.connect(MONGO_URL, MONGO_CONFIG).then(
     () => {

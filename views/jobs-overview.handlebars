@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col m12 s12">
-            <ul id="job-list" class="collapsible job-list">
-                <li v-for="job in jobs">
+            <ul id="job-list" class="collapsible z-depth-0 job-list">
+                <li v-for="job in jobs" :keys="job.location">
                     <div class="collapsible-header job-list-item-header">
                         <div class="container container-fluid">
                             <div class="row">
@@ -22,8 +22,9 @@
                             <div class="col m8 s6">[[ job.info ]]</div>
                             <div class="col m4 s6">
                                 <ul class="collection staff-list">
-                                    <li class="collection-item light-padding" v-for="staff in job.staff">[[ staff.nickname 
-                                        ]]</li>
+                                    <li class="collection-item light-padding" v-for="staff in job.staff">
+                                        [[ staff.name.first ]] [[ staff.name.last]]
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -47,13 +48,13 @@
             data: {
                 jobs: {{{ toJSON jobs }}}
             },
-            filters : {
-                moment : function (date) {
-                    return moment(date).format('DD-MMMM-YYYY');
-                }
+        filters : {
+            moment: function (date) {
+                return moment(date).locale('de').format('LL');
             }
+        }
         });
 
-        $('.collapsible').collapsible();
+    $('#job-list').collapsible();
     });
 </script>

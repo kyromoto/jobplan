@@ -1,60 +1,64 @@
-<div class="container">
-    <div class="row">
-        <div class="col m12 s12">
-            <ul id="job-list" class="collapsible z-depth-0 job-list">
-                <li v-for="job in jobs" :keys="job.location">
-                    <div class="collapsible-header job-list-item-header">
-                        <div class="container container-fluid">
+<div id="job-overview-app">
+    <div class="container">
+        <div class="row">
+            <div class="col m12 s12">
+                <ul id="job-list" class="collapsible z-depth-0 job-list">
+                    <li v-for="job in jobs" :keys="job.location">
+                        <div class="collapsible-header job-list-item-header">
+                            <div class="container container-fluid">
+                                <div class="row">
+                                    <div class="col m12 s12">
+                                        <h1>[[ job.title ]]</h1>
+                                        </Job>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col m3 s4 job-list-item-header-date">[[ job.date | moment ]]</div>
+                                    <div class="col m9 s8">[[ job.location ]]</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body job-list-item-body container container-fluid">
                             <div class="row">
-                                <div class="col m12 s12">
-                                    <h1>[[ job.title ]]</h1>
-                                    </Job>
+                                <div class="col m8 s6">[[ job.info ]]</div>
+                                <div class="col m4 s6">
+                                    <ul class="collection staff-list">
+                                        <li class="collection-item light-padding" v-for="staff in job.staff">
+                                            [[ staff.name.first ]] [[ staff.name.last]]
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col m3 s4 job-list-item-header-date">[[ job.date | moment ]]</div>
-                                <div class="col m9 s8">[[ job.location ]]</div>
+                                <div class="col m12 s12">
+                                    <div class="right">
+                                        <a v-bind:href="'/jobs/' + job._id" class="btn-small waves-effect blue lighten-3"><i class="material-icons">edit</i></a>
+                                        <a v-on:click="openModalDeleteJob(job)" class="btn-small waves-effect red lighten-3"><i class="material-icons">delete</i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="collapsible-body job-list-item-body container container-fluid">
-                        <div class="row">
-                            <div class="col m8 s6">[[ job.info ]]</div>
-                            <div class="col m4 s6">
-                                <ul class="collection staff-list">
-                                    <li class="collection-item light-padding" v-for="staff in job.staff">
-                                        [[ staff.name.first ]] [[ staff.name.last]]
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col m12 s12">
-                                <a v-bind:href="'/jobs/' + job._id">edit</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-delete-job" class="modal">
+        <div class="modal-content">
+            <h4>Job löschen</h4>
+            <p>Willst dur wirklich den Job löschen:</p>
+            <b id="modal-delete-job-name" class="center"></b>
+        </div>
+        <div class="modal-footer">
+            <a v-on:click="modalDeleteJobAgree" class="modal-close waves-effect btn-flat">Agree</a>
+            <a v-on:click="closeModalDeleteJob" class="modal-close waves-effect btn-flat">Disagree</a>
         </div>
     </div>
 </div>
 
 <script>
-    $(document).ready(() => {
-        let jobList = new Vue({
-            delimiters: ['[[', ']]'],
-            el: '#job-list',
-            data: {
-                jobs: {{{ toJSON jobs }}}
-            },
-        filters : {
-            moment: function (date) {
-                return moment(date).locale('de').format('LL');
-            }
-        }
-        });
-
-    $('#job-list').collapsible();
-    });
+    let hbsJobs = {{{ toJSON jobs }}}
 </script>
+
+<script type="text/javascript" src="/statics/js/jobs-overview.js"></script>

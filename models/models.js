@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const jobSchema = new mongoose.Schema({
-    _id : 'ObjectId',
+    _id : { type : 'ObjectId', auto : true },
     title : 'String',
     date : 'String',
     location : 'String',
@@ -12,7 +12,7 @@ const jobSchema = new mongoose.Schema({
 });
 
 const staffSchema = new mongoose.Schema({
-    _id : 'ObjectId',
+    _id : { type : 'ObjectId', auto : true },
     name : {
         first : "String",
         last : "String",

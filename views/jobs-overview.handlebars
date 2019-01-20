@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <form v-on:submit.prevent="handleNewJobSubmit">
-                <div class="input-field col m6 s12">
+                <div class="input-field col l7 m6 s12">
                     <input id="newJob-title" name="title" v-model="newJob.title" placeholder="z.B. Jukeboxparty Fachbach" type="text" class="validate" aria-required="true" data-ok="false" required>
                 </div>
-                <div class="input-field col m5 s12">
+                <div class="input-field col l3 m4 s12">
                     <input id="newJob-date" name="date" v-model="newJob.date" type="date" min="" class="validate" aria-required="true" data-ok="false" required>
                 </div>
-                <div class="input-field col m1 s12">
-                    <button type="submit" value="submit" class="btn" aria-disabled="true"><i class="material-icons">save</i></button>
+                <div class="input-field col l2 m2 s12">
+                    <button type="submit" value="submit" class="btn btn-with-full-width blue lighten-3 waves-effect" aria-disabled="true"><i class="material-icons">save</i></button>
                 </div>
             </form>
         </div>
@@ -20,29 +20,24 @@
                         <div class="collapsible-header job-list-item-header">
                             <div class="container container-fluid">
                                 <div class="row">
-                                    <div class="col m12 s12">
+                                    <div class="col m12 s12 job-list-item-header-date">[[ job.date | moment ]]</div>
+                                    <div class="col m4 s12">
                                         <h1>[[ job.title ]]</h1>
-                                        </Job>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col m3 s12 job-list-item-header-date">[[ job.date | moment ]]</div>
-                                    <div class="col m9 s12">[[ job.location ]]</div>
+                                    <div class="col m8 s12">[[ job.location ]]</div>
                                 </div>
                             </div>
                         </div>
                         <div class="collapsible-body job-list-item-body container container-fluid">
                             <div class="row">
-                                <div class="col m8 s12">[[ job.info ]]</div>
-                                <div class="col m4 s12">
+                                <div class="col m9 s12">[[ job.info ]]</div>
+                                <div class="col m3 s12">
                                     <ul class="collection staff-list">
                                         <li class="collection-item light-padding" v-for="staff in job.staff">
                                             [[ staff.name.first ]] [[ staff.name.last]]
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col m12 s12">
                                     <div class="right">
                                         <a v-bind:href="'/jobs/' + job._id" class="btn-small waves-effect blue lighten-3"><i

@@ -7,10 +7,15 @@ $(document).ready(() => {
             location : null,
             date : null,
             info : null,
-            staff : []
+            staffs : []
         },
         methods : {
-
+            handleAddStaff : function () {
+                this.staffs.push({ id: "", name: ""});
+            },
+            handleRemoveStaff : function() {
+                this.staffs.pop();
+            }
         },
         beforeMount() {
             if(typeof hbsJob != 'undefined') {
@@ -23,6 +28,14 @@ $(document).ready(() => {
             }
         }
     });
+
+    $('input.staff-autocomplete').autocomplete({
+        data : {
+            "1" : null,
+            "2" : null,
+            "3" : null
+        }
+    })
 
 
 });

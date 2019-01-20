@@ -1,19 +1,19 @@
 [
     {
         "title": "Jukeboxparty Fachbach",
-        "date": "31.10.2019",
+        "date": "31-10-2019",
         "location": "Gemeindehalle Fachbach",
         "info": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
     },
     {
         "title": "Luke Hettenleidelheim",
-        "date": "30.6.2019",
+        "date": "30-06-2019",
         "location": "Eventhalle Hettenleidelheim",
         "info": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
     },
     {
         "title": "Jukeboxparty Mayen",
-        "date": "30.04.2019",
+        "date": "30-04-2019",
         "location": "Halle 104, Mayen",
         "info": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
     }

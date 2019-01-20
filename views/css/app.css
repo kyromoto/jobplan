@@ -41,3 +41,7 @@ ul.staff-list > li:first-child {
 ul.staff-list > li:last-child {
     padding-bottom: 0 !important;
 }
+
+.btn.btn-with-full-width {
+    width: 100%;
+}

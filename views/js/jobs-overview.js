@@ -6,6 +6,10 @@ $(document).ready(() => {
             jobs: hbsJobs,
             modalDeleteJob: {
                 job: null
+            },
+            newJob : {
+                title : null,
+                date : null
             }
         },
         filters: {
@@ -28,8 +32,11 @@ $(document).ready(() => {
                 $.ajax({
                     url: '/jobs/' + this.modalDeleteJob.job._id,
                     type: 'DELETE',
-                    success: function(result) {
+                    success: function(res) {
                         location.reload();
+                    },
+                    error: function(err) {
+                        console.console.error(err);
                     }
                 });
             },
@@ -40,11 +47,31 @@ $(document).ready(() => {
                         return;
                     }
                 })
+            },
+            handleNewJobSubmit: function () {
+                $.ajax({
+                    url: '/jobs',
+                    type: 'POST',
+                    data : this.newJob,
+                    success: function(res) {
+                        location.reload();
+                    },
+                    error: function(err) {
+                        console.error(err);
+                    }
+                })
             }
 
         }
     });
 
+    let i18n = 'de';
+
+    moment.locale(i18n);
+    let months = moment.months();
+    let monthsShort = moment.monthsShort();
+
     $('#modal-delete-job').modal();
     $('#job-list').collapsible();
+    $('#newJob-date').attr('min', moment().format('YYYY-MM-DD'));
 });

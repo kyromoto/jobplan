@@ -2,6 +2,7 @@ const dotenv    = require('dotenv-json')();
 const express   = require('express');
 const mongoose  = require('mongoose');
 const exphbs    = require('express-handlebars');
+const bodyParser    = require('body-parser');
 
 const hbs_helpers   = require('./views/helpers');
 
@@ -27,9 +28,17 @@ const EXPHBS_CONFIG = {
     helpers : hbs_helpers
 }
 
+// set handlebars template engine
 app.engine('handlebars', exphbs(EXPHBS_CONFIG));
 app.set('view engine', 'handlebars');
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+// require endpoint routes + controller
 app.use('/', require('./controllers'));
 
 process.on('exit', () => {

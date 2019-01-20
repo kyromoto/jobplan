@@ -1,0 +1,41 @@
+<div id="job-edit-app" class="container">
+    <div class="row">
+        <div class="input-field col m8 s12">
+            <input id="title" name="title" v-model="title" type="text" class="validate" aria-required="true" data-ok="false"
+                required>
+            <label for="title">Titel</label>
+        </div>
+        <div class="input-field col m4 s12">
+            <input id="date" name="date" v-model="date" type="date" class="validate" aria-required="true" data-ok="false"
+                required>
+            <label for="date">Datum</label>
+        </div>
+        <div class="input-field col m12 s12">
+            <input id="location" name="location" v-model="location" type="text" class="" aria-required="false" data-ok="false">
+            <label for="location">Location</label>
+        </div>
+        <div class="input-field col m12 s12">
+            <textarea id="info" name="info" v-model="info" class="materialize-textarea" data-ok="false"></textarea>
+            <label for="info">Informationen</label>
+        </div>
+        <div class="input-field col m6 s12 offset-m6">
+            <input id="newStaff" name="newStaff" type="text">
+            <button><i class="material-icons">add</i></button>
+            <ul class="collection">
+                <li class="collection-item">Name 1 <a href="" class="secondary-content"><i class="material-icons">remove</i></a></li>
+            </ul>
+        </div>
+        <div class="input-field col m12 s12">
+            <div class="right">
+                <button type="reset" class="btn grey ligthen-3"><i class="material-icons left">cancel</i> Reset</button>
+                <button type="submit" class="btn blue lighten-3"><i class="material-icons left">update</i> Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let hbsJob = {{{ toJSON job }}}
+</script>
+
+<script type="text/javascript" src="/statics/js/jobs-edit.js"></script>

@@ -30,31 +30,29 @@ Staff.create(demoStaff)
 Router.get('/', (req, res) => {
     Job.find({}).populate('staff').sort('date')
         .then(jobs => {
-            res.render('jobs-overview', {
+            res.status(200).render('jobs-overview', {
                 jobs: jobs
             });
         })
-        .catch(err => res.status(500).send())
+        .catch(err => res.status(500).send(err))
 });
 
 Router.post('/', (req, res) => {
-    res.redirect('/');
+    Job.create(req.body)
+        .then(job => res.status(200).json(job))
+        .catch(err => res.status(500).json(err));
 });
 
-Router.get('/:id', (req, res) => {
+Router.get('/edit', (req, res) => {
     Job.find({ _id: req.params.id }).populate('staff')
-        .then(job => res.send(job))
-        .catch(err => res.status(404).send())
+        .then(job => res.status(200).render('jobs-edit', { job : job } ))
+        .catch(err => res.status(500).json(err))
 });
 
 Router.delete('/:id', (req, res) => {
     Job.deleteOne({ _id: req.params.id })
-        .then((deletedJob) => {
-            res.json(deletedJob)
-        })
-        .catch((err) => {
-            res.status(404).send();
-        })
+        .then((deletedJob) => res.json(deletedJob))
+        .catch((err) => res.status(500).json(err));
 });
 
 module.exports = Router;
